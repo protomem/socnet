@@ -1,8 +1,15 @@
 package app
 
 import (
+	"context"
+	"errors"
 	"fmt"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/protomem/socnet/profile-service/internal/config"
 )
@@ -26,5 +33,41 @@ func New(conf config.Config) *App {
 }
 
 func (app *App) Run() error {
-	return app.server.ListenAndServe()
+	ctx := context.Background()
+
+	errs := make(chan error)
+
+	go func() { errs <- app.startServer() }()
+	go func() { errs <- app.gracefullShutdown(ctx) }()
+
+	err := <-errs
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (app *App) startServer() error {
+	err := app.server.ListenAndServe()
+	if err != nil && !errors.Is(err, http.ErrServerClosed) {
+		return err
+	}
+
+	return nil
+}
+
+func (app *App) gracefullShutdown(ctx context.Context) error {
+	<-wait()
+
+	ctx, cancel := context.WithTimeout(ctx, 15*time.Second)
+	defer cancel()
+
+	return app.server.Shutdown(ctx)
+}
+
+func wait() <-chan os.Signal {
+	ch := make(chan os.Signal, 1)
+	signal.Notify(ch, os.Interrupt, syscall.SIGTERM)
+	return ch
 }

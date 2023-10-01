@@ -1,22 +1,23 @@
 package config
 
-import "os"
+import (
+	"fmt"
+
+	"github.com/protomem/socnet/pkg/env"
+)
 
 type Config struct {
 	HTTP struct {
-		Addr string
-	}
+		Addr string `env:"ADDR"`
+	} `envPrefix:"HTTP__"`
 }
 
 func New() (Config, error) {
-	var (
-		conf Config
-		ok   bool
-	)
+	var conf Config
 
-	conf.HTTP.Addr, ok = os.LookupEnv("HTTP__ADDR")
-	if !ok {
-		conf.HTTP.Addr = ":8080"
+	err := env.Parse(&conf)
+	if err != nil {
+		return Config{}, fmt.Errorf("config.New: %w", err)
 	}
 
 	return conf, nil

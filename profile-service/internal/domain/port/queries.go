@@ -46,7 +46,7 @@ type (
 		Password string
 	}
 
-	UpdateUserByNicknameQuery QueryWithResultFunc[UpdateUserByNicknameParams, model.User]
+	UpdateUserByNicknameQuery QueryWithResultFunc[Pair[string, UpdateUserByNicknameParams], model.User]
 )
 
 type (

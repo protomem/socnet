@@ -53,7 +53,7 @@ type (
 		NewPassword string
 	}
 
-	UpdateUserByNicknameUseCase UseCaseWithResultFunc[UpdateUserByNicknameDTO, model.User]
+	UpdateUserByNicknameUseCase UseCaseWithResultFunc[Pair[string, UpdateUserByNicknameDTO], model.User]
 )
 
 type (

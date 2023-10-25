@@ -46,11 +46,11 @@ type (
 
 type (
 	UpdateUserByNicknameDTO struct {
-		Nickname string
-		Email    string
+		Nickname *string
+		Email    *string
 
-		OldPassword string
-		NewPassword string
+		OldPassword *string
+		NewPassword *string
 	}
 
 	UpdateUserByNicknameUseCase UseCaseWithResultFunc[Pair[string, UpdateUserByNicknameDTO], model.User]

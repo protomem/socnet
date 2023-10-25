@@ -41,9 +41,10 @@ type (
 
 type (
 	UpdateUserByNicknameParams struct {
-		Nickname string
-		Email    string
-		Password string
+		Nickname *string
+		Email    *string
+		Verified *bool
+		Password *string
 	}
 
 	UpdateUserByNicknameQuery QueryWithResultFunc[Pair[string, UpdateUserByNicknameParams], model.User]

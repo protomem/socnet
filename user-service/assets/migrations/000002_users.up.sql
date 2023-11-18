@@ -1,16 +1,13 @@
-BEGIN;
 
 CREATE TABLE IF NOT EXISTS users (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id TEXT PRIMARY KEY,
 
-    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
 
-    nickname VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
+    nickname TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
 
-    email       VARCHAR(255) NOT NULL UNIQUE,
-    is_verified BOOLEAN NOT NULL DEFAULT false
+    email       TEXT NOT NULL UNIQUE,
+    is_verified INTEGER NOT NULL DEFAULT 0
 );
-
-COMMIT;

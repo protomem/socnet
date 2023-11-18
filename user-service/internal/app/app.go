@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/protomem/socnet/pkg/closing"
-	"github.com/protomem/socnet/profile-service/internal/config"
+	"github.com/protomem/socnet/user-service/internal/config"
 )
 
 type App struct {

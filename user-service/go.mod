@@ -1,4 +1,4 @@
-module github.com/protomem/socnet/profile-service
+module github.com/protomem/socnet/user-service
 
 go 1.21.1
 

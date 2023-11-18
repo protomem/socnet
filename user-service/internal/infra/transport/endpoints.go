@@ -6,8 +6,8 @@ import (
 
 	"github.com/go-kit/kit/endpoint"
 	"github.com/google/uuid"
-	"github.com/protomem/socnet/profile-service/internal/domain/model"
-	"github.com/protomem/socnet/profile-service/internal/domain/port"
+	"github.com/protomem/socnet/user-service/internal/domain/model"
+	"github.com/protomem/socnet/user-service/internal/domain/port"
 )
 
 var ErrInvalidRequest = errors.New("invalid request")

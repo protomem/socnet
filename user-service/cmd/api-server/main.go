@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/protomem/socnet/profile-service/internal/app"
-	"github.com/protomem/socnet/profile-service/internal/config"
+	"github.com/protomem/socnet/user-service/internal/app"
+	"github.com/protomem/socnet/user-service/internal/config"
 )
 
 func main() {

@@ -59,3 +59,17 @@ type (
 type (
 	DeleteUserByNicknameUseCase UseCaseFunc[string]
 )
+
+type UseCases struct {
+	GetUserUseCase
+	GetUserByNicknameUseCase
+	GetUserByEmailAndPasswordUseCase
+
+	FindUsersUseCase
+
+	CreateUserUseCase
+
+	UpdateUserByNicknameUseCase
+
+	DeleteUserByNicknameUseCase
+}

@@ -1,6 +1,8 @@
-go 1.21.1
+go 1.21.3
 
 use (
+	./auth-service
+	./email-service
 	./pkg
-	./user-service
+	./recommended-service
 )

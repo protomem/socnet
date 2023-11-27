@@ -1,0 +1,3 @@
+module github.com/protomem/socnet/auth-service
+
+go 1.21.3
